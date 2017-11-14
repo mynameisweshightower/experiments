@@ -1,0 +1,48 @@
+html>
+<body>
+<div class="holder">
+	<div class="thing">THING</div>
+</div>
+
+<style>
+	.holder
+	{
+		width:100%;
+		height:500px;
+		padding:90px 0;
+		display:flex;
+		align-items:center;
+		justify-content:center;
+	}
+	
+	.thing
+	{
+		width:100px;
+		height:100px;
+		background:blue;
+		margin:0 auto;
+		flex:0 0 auto;
+	}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script>
+	$(window).on('mousemove', function() {
+		thingX = $('.thing').offset().left;
+		thingY = $('.thing').offset().top;
+		mouseX = event.pageX;
+		mouseY = event.pageY;
+		shadowX = (thingX - mouseX) / 10;
+		shadowY = (thingY - mouseY) / 10;
+		shadowBlur = Math.abs(shadowX + shadowY);
+		shadowSpread = 10;//Math.abs((thingY - mouseY) / 10);
+		
+
+		$('.thing').css({'box-shadow':shadowX + 'px ' + shadowY + 'px ' + shadowBlur + 'px ' + shadowSpread + 'px rgba(0,0,0,0.8)'});
+		
+		console.log(thingX);
+	});
+</script>
+</body>
+</html>
